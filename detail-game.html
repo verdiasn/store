@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Top Up - Mobile Legends Bang Bang</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/game-controller.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --dark-bg: #212529;
+            --bg-main-light: #f8f9fa;
+            --text-color-light: #333;
+            --card-bg-light: #fff;
+            --light-bg-section: #e9ecef;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--bg-main-light);
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .game-detail-img {
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        /* Styling untuk Pilihan Produk (yang akan diuji) */
+        .product-option-card {
+            cursor: pointer;
+            border: 3px solid #ccc;
+            transition: all 0.2s;
+            background-color: var(--card-bg-light);
+        }
+        .product-option-card:hover, .product-option-card.active {
+            border-color: var(--primary-color);
+            background-color: #e9f0ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
+        }
+        .product-option-card h5 { margin: 0; font-weight: 700; color: var(--text-color-light);}
+        .product-option-card p { margin: 0; font-size: 0.9em; color: #6c757d;}
+        
+        /* Judul Section */
+        .step-heading {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: var(--text-color-light); 
+        }
+        
+        /* Footer Styling */
+        footer {
+            background-color: var(--dark-bg) !important;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: auto; 
+        }
+
+        /* Dark Mode CSS */
+        body.dark-mode {
+            --bg-main-light: #121212;
+            --text-color-light: #e0e0e0;
+            --card-bg-light: #1f1f1f;
+            --light-bg-section: #1a1a1a;
+            background-color: var(--bg-main-light);
+            color: var(--text-color-light);
+        }
+        body.dark-mode .product-option-card {
+            background-color: var(--card-bg-light) !important;
+            border-color: #333 !important;
+        }
+        body.dark-mode .product-option-card h5 {
+            color: var(--text-color-light);
+        }
+        body.dark-mode .product-option-card p {
+            color: #a0a0a0;
+        }
+        body.dark-mode .product-option-card.active {
+             background-color: #1f1f1f !important;
+             box-shadow: 0 5px 10px rgba(0, 123, 255, 0.4);
+        }
+        body.dark-mode .alert-success {
+            background-color: #042e09 !important;
+            color: #d4edda !important;
+            border-color: #0b4f14;
+        }
+        body.dark-mode .form-control {
+            background-color: #333;
+            color: #e0e0e0;
+            border-color: #555;
+        }
+        body.dark-mode .form-control::placeholder {
+            color: #bbb;
+        }
+        body.dark-mode .form-control:focus {
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+        body.dark-mode .bg-light {
+            background-color: #1a1a1a !important;
+        }
+        #darkModeToggle i { color: yellow; }
+        .dark-mode #darkModeToggle i { color: #4da6ff; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="beranda.html">
+                <img src="g.png" alt="GamerTopUp Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                GamerTopUp
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="beranda.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="beranda.html#games">Daftar Produk</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Detail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tentang-penjual.html">Tentang Penjual</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button class="btn btn-secondary" id="darkModeToggle" title="Ganti Mode Gelap">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-danger ms-lg-3" href="#" id="logoutBtn">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="py-5">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="https://imgs.search.brave.com/jbgcQQqae_1mHCthBxZ-4oftm5CzQxuZRZNzdfdzd-s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bGFwYWtnYW1pbmcu/Y29tL3N0YXRpYy9j/YXRlZ29yeS81NDB4/NTQwLU1MQkItTWV0/cm9aZXJvLnBuZw" class="img-fluid game-detail-img shadow-lg" alt="Mobile Legends Detail">
+                    
+                    <div class="mt-4 p-3 bg-light rounded shadow-sm">
+                        <h4 class="fw-bold mb-3"><i class="fas fa-info-circle me-2 text-primary"></i> Deskripsi Produk</h4>
+                        <p>Diamond adalah mata uang premium di Mobile Legends. Gunakan Diamond untuk membeli Hero baru, skin eksklusif, atau item in-game lainnya. Kami menjamin proses top up yang cepat dan 100% legal via ID. </p>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <h1 class="fw-bold mb-4 text-primary">Top Up Diamond Mobile Legends Bang Bang</h1>
+                    
+                    <hr>
+                    
+                    <h3 class="step-heading"><i class="fas fa-keyboard me-2 text-primary"></i> 1. Masukkan ID Akun</h3>
+                    <div class="mb-5">
+                        <input type="text" class="form-control form-control-lg" id="userID" placeholder="Masukkan User ID dan Zone ID (contoh: 12345678 (2001))" required>
+                        <small class="form-text text-muted">Pastikan ID game yang dimasukkan sudah benar.</small>
+                    </div>
+
+                    <h3 class="step-heading"><i class="fas fa-gem me-2 text-primary"></i> 2. Pilih Jumlah Diamond (Harga)</h3>
+                    <div class="row g-3 mb-5" id="productOptions">
+                        <div class="col-6 col-md-4">
+                            <div class="product-option-card p-3 text-center rounded shadow-sm" data-diamond="100" data-harga="25000">
+                                <h5>100 Diamond</h5>
+                                <p>Rp 25.000</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="product-option-card p-3 text-center rounded shadow-sm active" data-diamond="250" data-harga="58000">
+                                <h5>250 Diamond</h5>
+                                <p>Rp 58.000</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="product-option-card p-3 text-center rounded shadow-sm" data-diamond="500" data-harga="115000">
+                                <h5>500 Diamond</h5>
+                                <p>Rp 115.000</p>
+                            </div>
+                        </div>
+                         <div class="col-6 col-md-4">
+                            <div class="product-option-card p-3 text-center rounded shadow-sm" data-diamond="1000" data-harga="220000">
+                                <h5>1000 Diamond</h5>
+                                <p>Rp 220.000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="step-heading"><i class="fas fa-shopping-cart me-2 text-primary"></i> 3. Konfirmasi Pesanan</h3>
+                    
+                    <div class="alert alert-success fw-bold p-3">
+                        Pilihan Anda: <span id="selectedDiamond">250 Diamond</span> <br>
+                        Total yang harus dibayar: <span id="totalHarga">Rp 58.000</span>
+                    </div>
+
+                    <div class="mb-3" id="validationMessage" style="display:none;"></div>
+
+                    <a id="linkPembelian" style="display:none;" href="" target="_blank"></a>
+                    <button id="processOrderBtn" class="btn btn-success btn-lg mt-3 w-100 shadow-lg">
+                        <i class="fab fa-whatsapp me-2"></i> Konfirmasi & Order via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 GamerTopUp.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productOptions = document.querySelectorAll('.product-option-card');
+            const linkPembelian = document.getElementById('linkPembelian');
+            const totalHargaSpan = document.getElementById('totalHarga');
+            const selectedDiamondSpan = document.getElementById('selectedDiamond');
+            const userIDInput = document.getElementById('userID');
+            const processOrderBtn = document.getElementById('processOrderBtn');
+            const validationMessage = document.getElementById('validationMessage');
+            const waNumber = '6281234567890'; // Nomor WA Penjual
+            const body = document.body;
+            const toggle = document.getElementById('darkModeToggle');
+
+            // --- Cek Login Guard ---
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                window.location.href = 'index.html';
+                return;
+            }
+            // --- Logout Fungsionalitas ---
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('theme');
+                window.location.href = 'index.html';
+            });
+
+            // --- Dark Mode Fungsionalitas ---
+            const updateDarkModeIcon = () => {
+                toggle.innerHTML = body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            };
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+            }
+            updateDarkModeIcon();
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+                updateDarkModeIcon();
+            });
+
+            // --- Fungsionalitas Utama Detail Produk ---
+            const formatRupiah = (angka) => {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(angka);
+            };
+
+            let selectedDiamond = '250'; 
+            let totalHarga = '58000';
+
+            function updateWaLink(diamond, harga) {
+                const userID = userIDInput.value.trim() || '[MASUKKAN ID GAME & ZONE ID ANDA]';
+                const message = `Halo GamerTopUp, saya mau order ${diamond} Diamond Mobile Legends dengan ID ${userID} seharga ${harga}.`;
+                const encodedMessage = encodeURIComponent(message);
+                linkPembelian.href = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+            }
+
+            function updateSelection(card) {
+                productOptions.forEach(opt => opt.classList.remove('active'));
+                card.classList.add('active');
+
+                selectedDiamond = card.dataset.diamond;
+                totalHarga = card.dataset.harga;
+                const formattedPrice = formatRupiah(totalHarga);
+
+                selectedDiamondSpan.textContent = selectedDiamond + ' Diamond';
+                totalHargaSpan.textContent = formattedPrice;
+
+                updateWaLink(selectedDiamond, formattedPrice);
+            }
+
+            productOptions.forEach(card => {
+                card.addEventListener('click', function() {
+                    updateSelection(this);
+                });
+            });
+            userIDInput.addEventListener('input', () => {
+                 const currentCard = document.querySelector('.product-option-card.active');
+                 const formattedPrice = formatRupiah(currentCard.dataset.harga);
+                 updateWaLink(currentCard.dataset.diamond, formattedPrice);
+            });
+            
+            // Inisialisasi tampilan awal
+            updateSelection(document.querySelector('.product-option-card[data-diamond="250"]'));
+
+            // --- Validasi Form JavaScript (untuk Nilai Tambahan) ---
+            processOrderBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const userID = userIDInput.value.trim();
+                
+                if (userID === '' || userID.length < 5) {
+                    validationMessage.style.display = 'block';
+                    validationMessage.className = 'alert alert-danger';
+                    validationMessage.innerHTML = '<strong>Peringatan!</strong> Harap masukkan ID Akun Game yang valid (minimal 5 karakter).';
+                    userIDInput.focus();
+                    return;
+                }
+
+                // Jika validasi berhasil
+                validationMessage.style.display = 'none';
+                const currentCard = document.querySelector('.product-option-card.active');
+                const formattedPrice = formatRupiah(currentCard.dataset.harga);
+                updateWaLink(currentCard.dataset.diamond, formattedPrice);
+                
+                // Redirect ke link WhatsApp
+                window.open(linkPembelian.href, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

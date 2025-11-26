@@ -1,0 +1,241 @@
+/* Custom Fonts (opsional, bisa dari Google Fonts) */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); */
+
+:root {
+    --primary-color: #007bff; /* Warna biru Bootstrap */
+    --secondary-color: #6c757d; /* Warna abu-abu Bootstrap */
+    --dark-bg: #212529; /* Warna background navbar/footer */
+    --light-bg: #f8f9fa; /* Warna background section light */
+    --text-dark: #343a40;
+    --text-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Ganti dengan font pilihan Anda */
+    line-height: 1.6;
+    color: var(--text-dark);
+    padding-top: 70px; /* Offset untuk navbar fixed-top */
+}
+
+/* Navbar */
+.navbar {
+    transition: all 0.3s ease;
+    background-color: var(--dark-bg) !important; /* Pastikan navbar gelap */
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-light) !important;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-nav .btn-primary:hover {
+    background-color: #0056b3; /* Sedikit lebih gelap */
+    border-color: #0056b3;
+}
+
+
+/* Hero Section */
+.hero-section {
+    background: url('../img/banner.jpg') no-repeat center center/cover; /* Ganti dengan gambar banner Anda */
+    min-height: 70vh; /* Tinggi minimal */
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay gelap */
+    z-index: 1;
+}
+
+.hero-section > .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+/* Section Styling Umum */
+section {
+    padding: 80px 0;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Feature Cards */
+.feature-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .fa-3x {
+    color: var(--primary-color);
+}
+
+/* Game Cards */
+.game-card {
+    border: none;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.game-card .card-body {
+    padding: 1.5rem 1rem;
+}
+
+/* How-To Steps */
+.how-to-step {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-to-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.how-to-step .step-icon {
+    margin-bottom: 20px;
+}
+
+/* Testimonials Carousel */
+#testimonials .carousel-item {
+    padding: 30px 0;
+}
+
+#testimonials .blockquote {
+    font-style: italic;
+    color: var(--text-dark);
+}
+
+#testimonials .blockquote-footer {
+    color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg) !important;
+    color: var(--text-light);
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        background-color: var(--dark-bg);
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    section {
+        padding: 60px 0;
+    }
+    section h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 56px; /* Adjust for smaller navbar height */
+    }
+    .hero-section {
+        min-height: 60vh;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - GamerTopUp</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/game-controller.png" type="image/png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --dark-bg: #212529;
+            --bg-main-light: #f8f9fa;
+            --text-color-light: #333;
+            --card-bg-light: #fff;
+            --light-bg-section: #e9ecef; /* Latar belakang section bg-light */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column; /* Untuk sticky footer */
+            min-height: 100vh; /* Pastikan tinggi penuh */
+            margin: 0;
+            background-color: var(--bg-main-light);
+            color: var(--text-color-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Main Content Area */
+        main {
+            flex: 1; /* Pastikan konten utama mengisi ruang tersisa */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1550007887-f1c504060805?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            min-height: 70vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: #fff; /* Pastikan teks di hero section putih */
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+        .hero-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        section h2 {
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Game Cards Styling */
+        .game-card {
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            background-color: var(--card-bg-light);
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .game-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg) !important;
+            color: #fff;
+            padding: 20px 0;
+        }
+        footer a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Dark Mode CSS */
+        body.dark-mode {
+            --bg-main-light: #121212;
+            --text-color-light: #e0e0e0;
+            --card-bg-light: #1f1f1f;
+            --light-bg-section: #1a1a1a;
+            background-color: var(--bg-main-light);
+            color: var(--text-color-light);
+        }
+        body.dark-mode .bg-light {
+            background-color: var(--light-bg-section) !important;
+        }
+        body.dark-mode .card,
+        body.dark-mode .feature-card,
+        body.dark-mode .game-card {
+            background-color: var(--card-bg-light) !important;
+            border-color: #333 !important;
+            color: var(--text-color-light);
+        }
+        body.dark-mode .text-muted {
+            color: #a0a0a0 !important;
+        }
+        body.dark-mode .navbar-dark {
+            background-color: #0d0d0d !important;
+        }
+        body.dark-mode .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        body.dark-mode .navbar-nav .nav-link:hover,
+        body.dark-mode .navbar-nav .nav-link.active {
+            color: #4da6ff !important;
+        }
+        #darkModeToggle i { color: yellow; }
+        .dark-mode #darkModeToggle i { color: #4da6ff; }
+
+        /* Responsif */
+        @media (max-width: 991.98px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            body { padding-top: 0; } /* Hapus padding top pada mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="beranda.html">
+                <img src="g.png" alt="GamerTopUp Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                GamerTopUp
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Daftar Produk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tentang-penjual.html">Tentang Penjual</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <button class="btn btn-secondary" id="darkModeToggle" title="Ganti Mode Gelap">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-danger ms-lg-3" href="#" id="logoutBtn">Logout <i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header id="home" class="hero-section text-center">
+            <div class="container">
+                <h1 class="fw-bold mb-3 scroll-reveal">Top Up Game Instan & Terpercaya</h1>
+                <p class="lead mb-4 scroll-reveal">GamerTopUp adalah solusi tercepat untuk mendapatkan koin, diamond, atau *item* game favoritmu dengan harga terbaik dijamin 100% aman!</p>
+                <a href="#games" class="btn btn-primary btn-lg scroll-reveal">Lihat Daftar Game <i class="fas fa-arrow-down ms-2"></i></a>
+            </div>
+        </header>
+
+        <section id="games" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 fw-bold">Daftar Produk Populer</h2>
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                    
+                    <div class="col">
+                        <div class="card game-card h-100 shadow-sm scroll-reveal">
+                            <img src="https://imgs.search.brave.com/jbgcQQqae_1mHCthBxZ-4oftm5CzQxuZRZNzdfdzd-s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bGFwYWtnYW1pbmcu/Y29tL3N0YXRpYy9j/YXRlZ29yeS81NDB4/NTQwLU1MQkItTWV0/cm9aZXJvLnBuZw" class="card-img-top" alt="Mobile Legends Bang Bang">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Mobile Legends Bang Bang</h5>
+                                <p class="card-text text-muted">Diamond MLBB</p>
+                                <a href="detail-game.html?game=mlbb" class="btn btn-primary btn-sm mt-2">Top Up Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="card game-card h-100 shadow-sm scroll-reveal">
+                            <img src="https://imgs.search.brave.com/wpSDJdQIGCHK2MWqQK5R1MmBq3hzIvQsIKqupvKRxls/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGF0b2Ntcy1hc3Nl/dHMuY29tLzEwMzk2/Mi8xNzQzMDgyMzM1/LWZyZWUtZmlyZS1k/aWFtb25kcy02NDB3/LnBuZz9mbT1wbmc" class="card-img-top" alt="Free Fire">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Garena Free Fire</h5>
+                                <p class="card-text text-muted">Diamond FF</p>
+                                <a href="detail-game.html?game=freefire" class="btn btn-primary btn-sm mt-2">Top Up Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="card game-card h-100 shadow-sm scroll-reveal">
+                            <img src="https://imgs.search.brave.com/fH0D7pc0m6g4RIn_RC9n96AU03BQfieCAIH7fiJrZRA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWNnLnNwb3J0c2tl/ZWRhLmNvbS9lZGl0/b3IvMjAyNC8xMC9k/OGM3Ni0xNzI4MDI3/NzkwNjA0Mi0xOTIw/LmpwZw" class="card-img-top" alt="Genshin Impact">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">Genshin Impact</h5>
+                                <p class="card-text text-muted">Genesis Crystal</p>
+                                <a href="detail-game.html?game=genshin" class="btn btn-primary btn-sm mt-2">Top Up Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="card game-card h-100 shadow-sm scroll-reveal">
+                            <img src="https://imgs.search.brave.com/PHwo6WdT0pWlFwcjRwXZucBSTnnA0H34snErkth3jFI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTA1/NDE4MTk5MC9waG90/by9wYXJpcy1mcmFu/Y2UtdmlzaXRvcnMt/cXVldWUtdG8tcGxh/eS10aGUtdmlkZW8t/Z2FtZS1wbGF5ZXJ1/bmtub3ducy1iYXR0/bGVncm91bmRzLWRl/dmVsb3BlZC1hbmQu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUNqbW1Ub2ZsbG16/NDlaM2xTSl80SU84/OFR0RUd0Y2FqcUlX/a3o5VVRQelE9" class="card-img-top" alt="PUBG Mobile">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">PUBG Mobile</h5>
+                                <p class="card-text text-muted">UC PUBG</p>
+                                <a href="detail-game.html?game=pubgm" class="btn btn-primary btn-sm mt-2">Top Up Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5 class="fw-bold">GamerTopUp</h5>
+                    <p>Tempat top up game favoritmu dengan proses cepat, aman, dan harga terbaik.</p>
+                </div>
+                <div class="col-md-6 mb-3 text-md-end">
+                    <h5 class="fw-bold">Hubungi Kami</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Kantor Pusat: Jember, Indonesia</li>
+                        <li><i class="fas fa-envelope me-2"></i> support@gamertopup.com</li>
+                    </ul>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <p>&copy; 2025 GamerTopUp.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const toggle = document.getElementById('darkModeToggle');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            // --- Cek Login Guard ---
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                alert('Anda harus login terlebih dahulu.');
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // --- Logout Fungsionalitas ---
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('theme'); // Reset tema saat logout
+                window.location.href = 'index.html';
+            });
+
+            // --- Dark Mode Fungsionalitas ---
+            const updateDarkModeIcon = () => {
+                if (body.classList.contains('dark-mode')) {
+                    toggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    toggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            };
+
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+            }
+            updateDarkModeIcon();
+
+            toggle.addEventListener('click', function() {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+                updateDarkModeIcon();
+            });
+            
+            // --- Scroll Reveal Animation ---
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
