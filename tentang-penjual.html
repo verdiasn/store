@@ -15,7 +15,7 @@
             --bg-main-light: #f8f9fa;
             --text-color-light: #333;
             --card-bg-light: #fff;
-            --navbar-height: 70px; /* Estimasi tinggi navbar */
+            --navbar-height: 70px; 
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -27,14 +27,12 @@
             background-color: var(--bg-main-light);
             color: var(--text-color-light);
             transition: background-color 0.3s, color 0.3s;
-            /* FIX Jarak 1: Tambahkan padding-top di body setinggi navbar */
             padding-top: var(--navbar-height); 
         }
         
         .navbar {
             background-color: var(--dark-bg) !important;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            /* Pastikan navbar tetap di atas */
             height: var(--navbar-height); 
         }
         .navbar-brand {
@@ -53,13 +51,11 @@
         
         main {
             flex: 1;
-            /* Hapus padding-top karena sudah dipindahkan ke body */
             padding-top: 0; 
         }
 
-        /* FIX Jarak 2: Tambahkan margin/padding ekstra ke judul utama di dalam main */
         .container h1 {
-            margin-top: 3rem !important; /* Tambahkan margin atas yang signifikan */
+            margin-top: 3rem !important; 
             margin-bottom: 2rem !important;
         }
 
@@ -74,7 +70,6 @@
             transform: scale(1.05);
         }
         
-        /* Footer Styling */
         footer {
             background-color: var(--dark-bg) !important;
             color: #fff;
@@ -82,7 +77,6 @@
             margin-top: auto;
         }
 
-        /* Dark Mode CSS */
         body.dark-mode {
             --bg-main-light: #121212;
             --text-color-light: #e0e0e0;
