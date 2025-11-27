@@ -11,16 +11,15 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Ganti dengan font pilihan Anda */
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    padding-top: 70px; /* Offset untuk navbar fixed-top */
+    padding-top: 70px;
 }
 
-/* Navbar */
 .navbar {
     transition: all 0.3s ease;
-    background-color: var(--dark-bg) !important; /* Pastikan navbar gelap */
+    background-color: var(--dark-bg) !important;
 }
 
 .navbar-brand {
@@ -47,15 +46,13 @@ body {
 }
 
 .navbar-nav .btn-primary:hover {
-    background-color: #0056b3; /* Sedikit lebih gelap */
+    background-color: #0056b3;
     border-color: #0056b3;
 }
 
-
-/* Hero Section */
 .hero-section {
-    background: url('../img/banner.jpg') no-repeat center center/cover; /* Ganti dengan gambar banner Anda */
-    min-height: 70vh; /* Tinggi minimal */
+    background: url('gg.png') no-repeat center center/cover; 
+    min-height: 70vh;
     position: relative;
 }
 
@@ -66,7 +63,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Overlay gelap */
+    background-color: rgba(0, 0, 0, 0.6); 
     z-index: 1;
 }
 
@@ -86,7 +83,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Section Styling Umum */
 section {
     padding: 80px 0;
 }
@@ -110,7 +106,6 @@ section h2::after {
     border-radius: 2px;
 }
 
-/* Feature Cards */
 .feature-card {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -126,7 +121,6 @@ section h2::after {
     color: var(--primary-color);
 }
 
-/* Game Cards */
 .game-card {
     border: none;
     overflow: hidden;
@@ -147,7 +141,6 @@ section h2::after {
     padding: 1.5rem 1rem;
 }
 
-/* How-To Steps */
 .how-to-step {
     background-color: #fff;
     border: 1px solid #e0e0e0;
@@ -163,7 +156,6 @@ section h2::after {
     margin-bottom: 20px;
 }
 
-/* Testimonials Carousel */
 #testimonials .carousel-item {
     padding: 30px 0;
 }
@@ -177,7 +169,6 @@ section h2::after {
     color: var(--secondary-color);
 }
 
-/* Footer */
 footer {
     background-color: var(--dark-bg) !important;
     color: var(--text-light);
@@ -200,7 +191,6 @@ footer a:hover {
     color: var(--primary-color) !important;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 991.98px) {
     .navbar-nav {
         background-color: var(--dark-bg);
@@ -224,7 +214,7 @@ footer a:hover {
 
 @media (max-width: 767.98px) {
     body {
-        padding-top: 56px; /* Adjust for smaller navbar height */
+        padding-top: 56px;
     }
     .hero-section {
         min-height: 60vh;
